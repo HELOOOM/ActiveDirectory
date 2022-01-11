@@ -99,3 +99,48 @@ After the first login, we get the following message;
 
 ![You've been signed in with temporary](https://user-images.githubusercontent.com/56129562/149037303-12a4a745-fbd2-4964-b770-dcc1ad56a0b1.png)
 
+## Part II: Active Directory Groups
+
+Groups in Active Directory allow to assemble any type of object (user account, computer account, group) into a single entity in order to simplify administrative work in an Active Directory forest. In addition, the groups are characterized by their scope, which will limit their application in the forest. But also by their type, they can be assigned security authorizations if their type allows it.
+1. We Create three organizational units that will allow you to manage and organize users and user groups. We name them respectively `Casablanca` , `Fez` and `Rabat`.
+
+![A Forest medmac me](https://user-images.githubusercontent.com/56129562/149037493-54f293c8-7207-4a58-a03b-8b55f51d204d.png)
+
+We create 3 new users for each organizational unit. The result will look like this.
+![Active Directory Users and Computers](https://user-images.githubusercontent.com/56129562/149037540-626853ac-3f1f-422c-8705-49f3df1dad03.png)
+
+![Active Directory Users and Computers](https://user-images.githubusercontent.com/56129562/149037553-d379eef7-b203-44dd-b4d4-666b4497e6fd.png)
+
+![Active Directory Users and Computers](https://user-images.githubusercontent.com/56129562/149037568-c46f6a3f-b42e-4d8c-b5f0-f988dc0633fa.png)
+
+
+## Part III: Group Policy Object
+
+Group Policies (or GPO for Group Policy Object) are centralized management functions of the Microsoft Windows family. They allow the management of computers and users in an Active Directory environment. Group Policies are part of the IntelliMirror family of technologies, which include managing disconnected computers, managing roaming users or managing folder redirection, and managing files in offline mode.
+
+1. Apply a security policy for the user `Sales-dir-casablanca`, which will prevent the user from having the “control panel configuration” in the start menu.
+
+First we need to create a new GPO (Group Policy Object):
+![omain Policy](https://user-images.githubusercontent.com/56129562/149037663-df03b1d7-3767-407f-b722-382904601be4.png)
+
+Then we need to add the user to this GPO:
+![Select User, Computer, or Group](https://user-images.githubusercontent.com/56129562/149037697-81897c56-608c-4402-a859-4bf36e48bc74.png)
+
+Now, let's block the access to control panel, On the policy editor window, the setting that we’re looking for is under User Configuration > Adminsitrative Templates > Control Panel , find one setting named `Prohibit access to Control Panel and PC settings`.
+
+![Pasted Graphic 37](https://user-images.githubusercontent.com/56129562/149037811-2cdb7217-cfcf-4a03-a34f-96f83938411e.png)
+
+We make sure it is set to `Enabled`.
+![Prohibit access to Control Panel and PC settings](https://user-images.githubusercontent.com/56129562/149037853-9e255ff1-0eb0-4a51-84cf-7af6d4c15655.png)
+
+Now we need to apply the settings by the following command `gpupdate /force`
+
+![Updating policy](https://user-images.githubusercontent.com/56129562/149037875-b81ce129-5b5a-4d6e-a6f7-1ceecc302200.png)
+
+As a last step, we need to link the user to the GPO.
+![Select GPO](https://user-images.githubusercontent.com/56129562/149037936-668005fc-4eec-4ba5-b70f-1ea19ec20b91.png)
+
+**Results**
+When trying to access control panel, or Windows Settings, we get the following error.
+![Restrictions](https://user-images.githubusercontent.com/56129562/149038024-7c51e574-4f24-40f5-a864-121c6962c9c1.png)
+
