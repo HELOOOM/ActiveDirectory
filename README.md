@@ -52,3 +52,50 @@ Install-ADDSForest `
 ```
 ![Prerequisites Check](https://user-images.githubusercontent.com/56129562/149036334-a5f9d172-f3f8-488d-9641-b5d3a7d756df.png)
 After the installation we restart the server.
+
+
+## Adding a user to the domain
+We create a new user `ouhidaoui@medmac.me`. And add it to the domain.
+
+![New Object - User](https://user-images.githubusercontent.com/56129562/149036525-d425c31d-fe29-41fc-84ee-4eced562dc74.png)
+
+![New Object - User](https://user-images.githubusercontent.com/56129562/149036540-3d286e15-0cfb-47ef-a20d-d6230351fe16.png)
+
+**Note**: In order to avoid any login problems, we need to explicitely allow the user to log in into his account. To do so, we need to add it to the `Allow log on locally` policy.
+
+![Allow log on locally Properties](https://user-images.githubusercontent.com/56129562/149036697-0ffcb40d-2266-4025-a87d-f4218e9c1a53.png)
+
+For the first time, we must change the password to log in.
+![Other user](https://user-images.githubusercontent.com/56129562/149036734-a3af3218-6b31-4c49-b56a-25afbefa132a.png)
+
+## Roaming Profiles
+
+A profile is a folder that contains all the settings pertaining to a user’s working environment. By default, the profile is stored in the C:\Users directory.
+A roaming profile, on the other hand, is stored on a network instead on the local drive of the machine where you are logged. A Roaming profile is cached locally by default. The advantage of a roaming profile is that a user can log into any machine in the domain and have a consistent working environment.
+
+First, we need to create a Roaming folder and share it across the network. 
+![Pasted Graphic 18](https://user-images.githubusercontent.com/56129562/149036941-a852cc63-0c76-487b-85ce-b0709634224e.png)
+
+![Pasted Graphic 20](https://user-images.githubusercontent.com/56129562/149036947-a5bb72ab-2209-40ba-814e-457d70b3fd22.png)
+
+![Oussama Hidaoui Properties](https://user-images.githubusercontent.com/56129562/149037022-ec4a65e7-8df4-4ba4-b1dd-65a40fa5296e.png)
+
+**Final Results**:
+![Desktop](https://user-images.githubusercontent.com/56129562/149037087-0fa8750f-001d-47c9-a1c3-013ec92b9d43.png)
+
+We can map the folders as a network drive
+![v Devices and drives (2)](https://user-images.githubusercontent.com/56129562/149037121-150f3bd1-ee8b-4343-90c9-a4560052ff3e.png)
+
+## Mandatory profiles
+
+A mandatory user profile is a roaming user profile that has been pre-configured by an administrator to specify settings for users. ... Configuration changes made during a user's session that are normally saved to a roaming user profile are not saved when a mandatory user profile is assigned.
+
+![New Object - User](https://user-images.githubusercontent.com/56129562/149037203-5c37dafd-b17a-49eb-93f5-61cae2e4646c.png)
+
+We create a new mandatory user, which is a basic user.
+
+After the first login, we get the following message;
+![We can't sign into your account](https://user-images.githubusercontent.com/56129562/149037294-369ebd29-5a19-43da-8a85-2286d8376164.png)
+
+![You've been signed in with temporary](https://user-images.githubusercontent.com/56129562/149037303-12a4a745-fbd2-4964-b770-dcc1ad56a0b1.png)
+
