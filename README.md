@@ -144,3 +144,7 @@ As a last step, we need to link the user to the GPO.
 When trying to access control panel, or Windows Settings, we get the following error.
 ![Restrictions](https://user-images.githubusercontent.com/56129562/149038024-7c51e574-4f24-40f5-a864-121c6962c9c1.png)
 
+
+![WhatsApp Image 2022-01-17 at 21 01 35](https://user-images.githubusercontent.com/53974876/149830892-1c28de94-8b9c-4b20-9b10-2283029bde48.jpeg)
+
+
